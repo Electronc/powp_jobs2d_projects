@@ -12,7 +12,18 @@ public class DriverFeature implements DriverFeatureInterface{
     private static final DriverManager driverManager = new DriverManager();
     private static Application app;
     private static final UsageMonitorFeature usageMonitorFeature = new UsageMonitorFeature();
+    private static DriverFeature instance;
 
+    public static DriverFeature getInstance() {
+        if (instance == null) {
+            synchronized (DriverFeature.class) {
+                if (instance == null) {
+                    instance = new DriverFeature();
+                }
+            }
+        }
+        return instance;
+    }
     public static DriverManager getDriverManager() {
         return driverManager;
     }
@@ -22,7 +33,7 @@ public class DriverFeature implements DriverFeatureInterface{
      *
      * @param application Application context.
      */
-    public static void setupDriverFeature(Application application) {
+    public void setupDriverFeature(Application application, DriverManager driverManager) {
         app = application;
         app.addComponentMenu(DriverFeature.class, "Drivers");
 

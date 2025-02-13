@@ -15,21 +15,27 @@ import edu.kis.powp.jobs2d.drivers.ToggleDriverDecoratorOptionListener;
 import edu.kis.powp.observer.Publisher;
 
 public class CanvasFeature implements DriverFeatureInterface {
-    private static Application application;
+    private static Application app;
     private static List<ICanvas> canvases = null;
     private static ICanvas currentCanvas;
     private static Publisher changePublisher = new Publisher();
     private static final CanvasRestrictionDriverDecorator driverDecorator = new CanvasRestrictionDriverDecorator(null);
+    private static CanvasFeature instance;
 
-    /**
-     * Initializes and sets up the canvas feature for the application.
-     * It creates and adds the 'Canvas Settings' menu along with submenus for grouped canvases.
-     *
-     * @param app The application instance to which the canvas feature will be added.
-     */
-    public static void setupDriverFeature(Application app) {
-        application = app;
-        application.addComponentMenu(CanvasFeature.class, "Canvas Settings", 0);
+    public static CanvasFeature getInstance() {
+        if (instance == null) {
+            synchronized (CanvasFeature.class) {
+                if (instance == null) {
+                    instance = new CanvasFeature();
+                }
+            }
+        }
+        return instance;
+    }
+    
+    public void setupDriverFeature(Application application, DriverManager driverManager) {
+        app = application;
+        app.addComponentMenu(CanvasFeature.class, "Canvas Settings", 0);
 
         JMenu mainMenu = getMainMenu();
 
@@ -59,7 +65,7 @@ public class CanvasFeature implements DriverFeatureInterface {
      * @return The main menu for canvas settings.
      */
     private static JMenu getMainMenu() {
-        JMenuBar menuBar = application.getFreePanel().getRootPane().getJMenuBar();
+        JMenuBar menuBar = app.getFreePanel().getRootPane().getJMenuBar();
 
         JMenu mainMenu = findMenu(menuBar);
         if (mainMenu != null) {
@@ -109,7 +115,7 @@ public class CanvasFeature implements DriverFeatureInterface {
 
     public static void addDriverDecorator(String name) {
         ToggleDriverDecoratorOptionListener listener = new ToggleDriverDecoratorOptionListener(driverDecorator);
-        application.addComponentMenuElementWithCheckBox(CanvasFeature.class, name, listener, false);
+        app.addComponentMenuElementWithCheckBox(CanvasFeature.class, name, listener, false);
     }
 
     /**

@@ -141,8 +141,8 @@ public class TestJobs2dApp {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Application app = new Application("Jobs 2D");
-                DrawerFeature.setupDriverFeature(app);
-                CommandsFeature.setupDriverFeature();
+                DrawerFeature.getInstance().setupDriverFeature(app, null);
+                CommandsFeature.getInstance().setupDriverFeature(null, null);
 
                 List<ICanvas> canvases = new ArrayList<>();
                 for (Format format : Format.values()) {
@@ -152,10 +152,10 @@ public class TestJobs2dApp {
                 canvases.add(new EllipseCanvas(150, 100, "Ellipse rx:150 ry:100", "custom"));
                 
                 CanvasFeature.setCanvases(canvases);
-                CanvasFeature.setupDriverFeature(app);
+                CanvasFeature.getInstance().setupDriverFeature(app, null);
 
                 UsageMonitorFeature.getInstance().setupDriverFeature(null,DriverFeature.getDriverManager());
-                DriverFeature.setupDriverFeature(app);
+                DriverFeature.getInstance().setupDriverFeature(app, null);
                 setupDrivers(app);
                 TransformationFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
                 MacroFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());

@@ -1,19 +1,28 @@
 package edu.kis.powp.jobs2d.features;
 
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.events.SelectClearPanelOptionListener;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 
 public class DrawerFeature implements DriverFeatureInterface {
 
     private static DrawPanelController drawerController;
+    private static DrawerFeature instance;
 
-    /**
-     * Setup Drawer Plugin and add to application.
-     * 
-     * @param application Application context.
-     */
-    public static void setupDriverFeature(Application application) {
+    public static DrawerFeature getInstance() {
+        if (instance == null) {
+            synchronized (DrawerFeature.class) {
+                if (instance == null) {
+                    instance = new DrawerFeature();
+                }
+            }
+        }
+        return instance;
+    }
+   
+    
+    public void setupDriverFeature(Application application, DriverManager driverManager) {
         SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 
         drawerController = new DrawPanelController();
