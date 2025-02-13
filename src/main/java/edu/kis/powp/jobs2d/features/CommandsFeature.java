@@ -24,7 +24,7 @@ public class CommandsFeature implements DriverFeatureInterface{
     }
 
 	@Override
-	public void setupDriverFeature() {
+	public void setupDriverFeature(Object... params) {
 		// TODO Auto-generated method stub
 		
 	}

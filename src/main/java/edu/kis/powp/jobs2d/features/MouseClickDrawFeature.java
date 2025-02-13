@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("Convert2Lambda")
-public class MouseClickDrawFeature {
+public class MouseClickDrawFeature implements DriverFeatureInterface{
 
 	private static Application application;
 	private static DriverManager driverManager;
@@ -64,5 +64,11 @@ public class MouseClickDrawFeature {
 	private static int translateCoordinateY(int y) {
 		int centerY = MouseClickDrawFeature.application.getFreePanel().getHeight() / 2;
 		return y - centerY;
+	}
+
+	@Override
+	public void setupDriverFeature(Object... params) {
+		// TODO Auto-generated method stub
+		
 	}
 }

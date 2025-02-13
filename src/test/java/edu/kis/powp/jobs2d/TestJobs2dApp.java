@@ -150,7 +150,7 @@ public class TestJobs2dApp {
                 }
                 canvases.add(new RectangleCanvas(200, 100, "Rectangle 200x100", "custom"));
                 canvases.add(new EllipseCanvas(150, 100, "Ellipse rx:150 ry:100", "custom"));
-
+                
                 CanvasFeature.setCanvases(canvases);
                 CanvasFeature.setupCanvasFeature(app);
 

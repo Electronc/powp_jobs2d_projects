@@ -7,7 +7,7 @@ import edu.kis.powp.jobs2d.drivers.VisitableJob2dDriver;
 import edu.kis.powp.jobs2d.drivers.observer.UpdateDriverInfoSubscriber;
 import edu.kis.powp.jobs2d.drivers.observer.UpdateDriverVisitorSubscriber;
 
-public class DriverFeature {
+public class DriverFeature implements DriverFeatureInterface{
 
     private static final DriverManager driverManager = new DriverManager();
     private static Application app;
@@ -42,4 +42,10 @@ public class DriverFeature {
         SelectDriverMenuOptionListener listener = new SelectDriverMenuOptionListener(driver, driverManager);
         app.addComponentMenuElement(DriverFeature.class, name, listener);
     }
+
+	@Override
+	public void setupDriverFeature(Object... params) {
+		// TODO Auto-generated method stub
+		
+	}
 }

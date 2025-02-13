@@ -8,7 +8,7 @@ import edu.kis.powp.jobs2d.drivers.adapter.transformation.TransformationMethod;
 import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 import edu.kis.powp.observer.Publisher;
 
-public class TransformationFeature {
+public class TransformationFeature implements DriverFeatureInterface{
     private static final TransformationDriver transformationDriver = new TransformationDriver();
     private static final Publisher publisher = new Publisher();
     private static Application app;
@@ -35,4 +35,10 @@ public class TransformationFeature {
         ToggleTransformationOptionListener listener = new ToggleTransformationOptionListener(transformationDriver, transformationMethod, publisher);
         app.addComponentMenuElementWithCheckBox(TransformationFeature.class, name, listener, false);
     }
+
+	@Override
+	public void setupDriverFeature(Object... params) {
+		// TODO Auto-generated method stub
+		
+	}
 }

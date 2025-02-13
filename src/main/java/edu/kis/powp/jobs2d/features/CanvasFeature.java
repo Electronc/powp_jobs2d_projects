@@ -27,6 +27,11 @@ public class CanvasFeature implements DriverFeatureInterface{
      *
      * @param app The application instance to which the canvas feature will be added.
      */
+    
+    public CanvasFeature(Application app) {
+    	application = app;
+    }
+    
     public static void setupCanvasFeature(Application app) {
         application = app;
         application.addComponentMenu(CanvasFeature.class, "Canvas Settings", 0);
@@ -127,7 +132,7 @@ public class CanvasFeature implements DriverFeatureInterface{
     }
 
 	@Override
-	public void setupDriverFeature() {
+	public void setupDriverFeature(Object... params) {
 		// TODO Auto-generated method stub
 		
 	}
