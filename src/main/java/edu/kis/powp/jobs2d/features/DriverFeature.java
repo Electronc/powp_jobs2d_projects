@@ -22,7 +22,7 @@ public class DriverFeature implements DriverFeatureInterface{
      *
      * @param application Application context.
      */
-    public static void setupDriverPlugin(Application application) {
+    public static void setupDriverFeature(Application application) {
         app = application;
         app.addComponentMenu(DriverFeature.class, "Drivers");
 
@@ -42,10 +42,4 @@ public class DriverFeature implements DriverFeatureInterface{
         SelectDriverMenuOptionListener listener = new SelectDriverMenuOptionListener(driver, driverManager);
         app.addComponentMenuElement(DriverFeature.class, name, listener);
     }
-
-	@Override
-	public void setupDriverFeature(Object... params) {
-		// TODO Auto-generated method stub
-		
-	}
 }

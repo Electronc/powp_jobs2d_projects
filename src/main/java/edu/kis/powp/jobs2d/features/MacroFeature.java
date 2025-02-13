@@ -14,6 +14,7 @@ import javax.swing.*;
 
 public class MacroFeature implements DriverFeatureInterface {
     private static Application application;
+    private static DriverManager driverManager;
     private static CompoundCommandBuilder recordedCommand;
     private static final RecordMacroDriverDecorator recordMacroDriverDecorator = new RecordMacroDriverDecorator();
 
