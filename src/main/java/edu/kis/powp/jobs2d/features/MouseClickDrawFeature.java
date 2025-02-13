@@ -15,9 +15,21 @@ public class MouseClickDrawFeature implements DriverFeatureInterface{
 
 	private static Application application;
 	private static DriverManager driverManager;
+	private static MouseClickDrawFeature instance;
 	private static boolean armed = false;
 
-	public static void setupDriverFeature(
+	public static MouseClickDrawFeature getInstance() {
+		if (instance == null) {
+			synchronized (MouseClickDrawFeature.class) {
+				if (instance == null) {
+					instance = new MouseClickDrawFeature();
+				}
+			}
+		}
+		return instance;
+	}
+
+	public void setupDriverFeature(
 			Application application,
 			DriverManager driverManager
 	) {

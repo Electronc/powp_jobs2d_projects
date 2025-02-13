@@ -10,17 +10,31 @@ import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener.MacroAction;
 
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.swing.*;
+import java.util.Objects;
 
 public class MacroFeature implements DriverFeatureInterface {
     private static Application application;
+    private static MacroFeature instance;
     private static DriverManager driverManager;
     private static CompoundCommandBuilder recordedCommand;
     private static final RecordMacroDriverDecorator recordMacroDriverDecorator = new RecordMacroDriverDecorator();
 
-    private static boolean isRecording = false;
 
-    public static void setupDriverFeature(Application application, DriverManager driverManager) {
+    public static MacroFeature getInstance() {
+        if (instance == null) {
+            synchronized (MacroFeature.class) {
+                if (instance == null) {
+                    instance = new MacroFeature();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private static boolean isRecording = false;
+    public void setupDriverFeature(Application application, DriverManager driverManager){
         recordedCommand = new CompoundCommandBuilder();
         recordedCommand.setName("Record command");
 

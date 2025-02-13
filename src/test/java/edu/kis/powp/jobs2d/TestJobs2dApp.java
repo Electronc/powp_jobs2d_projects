@@ -154,18 +154,18 @@ public class TestJobs2dApp {
                 CanvasFeature.setCanvases(canvases);
                 CanvasFeature.setupDriverFeature(app);
 
-                UsageMonitorFeature.setupDriverFeature(DriverFeature.getDriverManager());
+                UsageMonitorFeature.getInstance().setupDriverFeature(null,DriverFeature.getDriverManager());
                 DriverFeature.setupDriverFeature(app);
                 setupDrivers(app);
-                TransformationFeature.setupDriverFeature(app, DriverFeature.getDriverManager());
-                MacroFeature.setupDriverFeature(app, DriverFeature.getDriverManager());
+                TransformationFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
+                MacroFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
                 setupTransformations();
                 setupPresetTests(app);
                 setupCommandTests(app);
                 setupLogger(app);
                 setupWindows(app);
 
-                MouseClickDrawFeature.setupDriverFeature(app, DriverFeature.getDriverManager());
+                MouseClickDrawFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
                 app.setVisibility(true);
             }
         });

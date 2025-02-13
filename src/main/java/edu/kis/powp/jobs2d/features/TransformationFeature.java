@@ -11,6 +11,7 @@ import edu.kis.powp.observer.Publisher;
 public class TransformationFeature implements DriverFeatureInterface{
     private static final TransformationDriver transformationDriver = new TransformationDriver();
     private static final Publisher publisher = new Publisher();
+    private static TransformationFeature instance;
     private static Application app;
 
     /**
@@ -18,7 +19,19 @@ public class TransformationFeature implements DriverFeatureInterface{
      *
      * @param application Application context.
      */
-    public static void setupDriverFeature(Application application, DriverManager driverManager) {
+
+    public static TransformationFeature getInstance() {
+        if (instance == null) {
+            synchronized (TransformationFeature.class) {
+                if (instance == null) {
+                    instance = new TransformationFeature();
+                }
+            }
+    }
+        return instance;
+    }
+
+    public void setupDriverFeature(Application application, DriverManager driverManager) {
         app = application;
         app.addComponentMenu(TransformationFeature.class, "Transformations");
 
