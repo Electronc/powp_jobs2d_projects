@@ -18,7 +18,7 @@ public class TransformationFeature implements DriverFeatureInterface{
      *
      * @param application Application context.
      */
-    public static void setupTransformationPlugin(Application application, DriverManager driverManager) {
+    public static void setupDriverFeature(Application application, DriverManager driverManager) {
         app = application;
         app.addComponentMenu(TransformationFeature.class, "Transformations");
 
@@ -36,9 +36,4 @@ public class TransformationFeature implements DriverFeatureInterface{
         app.addComponentMenuElementWithCheckBox(TransformationFeature.class, name, listener, false);
     }
 
-	@Override
-	public void setupDriverFeature(Object... params) {
-		// TODO Auto-generated method stub
-		
-	}
 }

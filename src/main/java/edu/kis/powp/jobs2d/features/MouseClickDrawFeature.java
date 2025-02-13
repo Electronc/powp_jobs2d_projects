@@ -17,7 +17,7 @@ public class MouseClickDrawFeature implements DriverFeatureInterface{
 	private static DriverManager driverManager;
 	private static boolean armed = false;
 
-	public static void setupMousePlugin(
+	public static void setupDriverFeature(
 			Application application,
 			DriverManager driverManager
 	) {
@@ -66,9 +66,4 @@ public class MouseClickDrawFeature implements DriverFeatureInterface{
 		return y - centerY;
 	}
 
-	@Override
-	public void setupDriverFeature(Object... params) {
-		// TODO Auto-generated method stub
-		
-	}
 }

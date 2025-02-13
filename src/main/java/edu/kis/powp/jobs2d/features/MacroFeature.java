@@ -10,17 +10,18 @@ import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener.MacroAction;
 
-public class MacroFeature {
+import javax.swing.*;
+
+public class MacroFeature implements DriverFeatureInterface {
     private static Application application;
     private static CompoundCommandBuilder recordedCommand;
     private static final RecordMacroDriverDecorator recordMacroDriverDecorator = new RecordMacroDriverDecorator();
 
     private static boolean isRecording = false;
 
-    public static void setupMacroFeature(Application app, DriverManager driverManager) {
+    public static void setupDriverFeature(Application application, DriverManager driverManager) {
         recordedCommand = new CompoundCommandBuilder();
         recordedCommand.setName("Record command");
-        application = app;
 
         SelectMacroOptionListener clearOption = new SelectMacroOptionListener(MacroAction.CLEAR);
         SelectMacroOptionListener startOption = new SelectMacroOptionListener(MacroAction.TOGGLE);

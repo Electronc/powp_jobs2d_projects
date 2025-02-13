@@ -8,15 +8,9 @@ public class UsageMonitorFeature implements DriverFeatureInterface{
 
     private static final DeviceMonitorDriver deviceMonitorDriver = new DeviceMonitorDriver();
 
-    public static void setupDeviceMonitorPlugin(DriverManager driverManager) {
+    public static void setupDriverFeature(DriverManager driverManager) {
         ApplyDriverDecoratorsSubscriber.getInstance().addDriverDecorator(deviceMonitorDriver);
         ApplyDriverDecoratorsSubscriber.getInstance().setDriverManager(driverManager);
         driverManager.addSubscriber(ApplyDriverDecoratorsSubscriber.getInstance());
     }
-
-	@Override
-	public void setupDriverFeature(Object... params) {
-		// TODO Auto-generated method stub
-		
-	}
 }

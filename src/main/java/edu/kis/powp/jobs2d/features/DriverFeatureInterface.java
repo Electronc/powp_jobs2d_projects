@@ -2,6 +2,9 @@ package edu.kis.powp.jobs2d.features;
 
 public interface DriverFeatureInterface {
 
-    void setupDriverFeature(Object... params);
+    static void setupDriverFeature(Object... params)
+    {
+        //Feature setup
+    }
 
 }
