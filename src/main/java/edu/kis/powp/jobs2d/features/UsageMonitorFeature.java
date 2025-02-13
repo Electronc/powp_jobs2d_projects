@@ -4,7 +4,7 @@ import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.adapter.monitor.DeviceMonitorDriver;
 import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 
-public class UsageMonitorFeature {
+public class UsageMonitorFeature implements DriverFeatureInterface{
 
     private static final DeviceMonitorDriver deviceMonitorDriver = new DeviceMonitorDriver();
 
@@ -13,4 +13,10 @@ public class UsageMonitorFeature {
         ApplyDriverDecoratorsSubscriber.getInstance().setDriverManager(driverManager);
         driverManager.addSubscriber(ApplyDriverDecoratorsSubscriber.getInstance());
     }
+
+	@Override
+	public void setupDriverFeature() {
+		// TODO Auto-generated method stub
+		
+	}
 }

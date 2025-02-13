@@ -3,7 +3,7 @@ package edu.kis.powp.jobs2d.features;
 import edu.kis.powp.jobs2d.command.manager.DriverCommandManager;
 import edu.kis.powp.jobs2d.command.manager.LoggerCommandChangeObserver;
 
-public class CommandsFeature {
+public class CommandsFeature implements DriverFeatureInterface{
 
     private static DriverCommandManager commandManager;
 
@@ -22,4 +22,10 @@ public class CommandsFeature {
     public static DriverCommandManager getDriverCommandManager() {
         return commandManager;
     }
+
+	@Override
+	public void setupDriverFeature() {
+		// TODO Auto-generated method stub
+		
+	}
 }

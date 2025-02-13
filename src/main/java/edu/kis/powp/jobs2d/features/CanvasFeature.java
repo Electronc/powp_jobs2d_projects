@@ -14,7 +14,7 @@ import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.ToggleDriverDecoratorOptionListener;
 import edu.kis.powp.observer.Publisher;
 
-public class CanvasFeature {
+public class CanvasFeature implements DriverFeatureInterface{
     private static Application application;
     private static List<ICanvas> canvases = null;
     private static ICanvas currentCanvas;
@@ -125,4 +125,10 @@ public class CanvasFeature {
     public static Publisher getChangePublisher() {
         return changePublisher;
     }
+
+	@Override
+	public void setupDriverFeature() {
+		// TODO Auto-generated method stub
+		
+	}
 }
