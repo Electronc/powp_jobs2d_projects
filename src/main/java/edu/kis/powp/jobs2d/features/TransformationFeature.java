@@ -8,7 +8,7 @@ import edu.kis.powp.jobs2d.drivers.adapter.transformation.TransformationMethod;
 import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 import edu.kis.powp.observer.Publisher;
 
-public class TransformationFeature implements DriverFeatureInterface{
+public class TransformationFeature implements FeatureInterface{
     private static final TransformationDriver transformationDriver = new TransformationDriver();
     private static final Publisher publisher = new Publisher();
     private static TransformationFeature instance;
@@ -31,7 +31,7 @@ public class TransformationFeature implements DriverFeatureInterface{
         return instance;
     }
 
-    public void setupDriverFeature(Application application, DriverManager driverManager) {
+    public void setupFeature(Application application, DriverManager driverManager) {
         app = application;
         app.addComponentMenu(TransformationFeature.class, "Transformations");
 

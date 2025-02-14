@@ -141,9 +141,9 @@ public class TestJobs2dApp {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Application app = new Application("Jobs 2D");
-                DrawerFeature.getInstance().setupDriverFeature(app, null);
-                CommandsFeature.getInstance().setupDriverFeature(app, null);
-
+                FeatureManager featureManager = new FeatureManager(app, DriverFeature.getDriverManager());
+                featureManager.addFeature(DrawerFeature.getInstance());
+                featureManager.addFeature(CommandsFeature.getInstance());
                 List<ICanvas> canvases = new ArrayList<>();
                 for (Format format : Format.values()) {
                     canvases.add(new RectangleCanvas(format));
@@ -152,20 +152,28 @@ public class TestJobs2dApp {
                 canvases.add(new EllipseCanvas(150, 100, "Ellipse rx:150 ry:100", "custom"));
                 
                 CanvasFeature.setCanvases(canvases);
-                CanvasFeature.getInstance().setupDriverFeature(app, null);
-
-                UsageMonitorFeature.getInstance().setupDriverFeature(null,DriverFeature.getDriverManager());
-                DriverFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
+                
+                featureManager.addFeature(CanvasFeature.getInstance());
+                featureManager.addFeature(UsageMonitorFeature.getInstance());
+                featureManager.addFeature(DriverFeature.getInstance());
+                featureManager.addFeature(TransformationFeature.getInstance());
+                featureManager.addFeature(MacroFeature.getInstance());
+                featureManager.addFeature(MouseClickDrawFeature.getInstance());
+                
+                featureManager.setupAll();
+                
+                
                 setupDrivers(app);
-                TransformationFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
-                MacroFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
+                
+               
+                
                 setupTransformations();
                 setupPresetTests(app);
                 setupCommandTests(app);
                 setupLogger(app);
                 setupWindows(app);
 
-                MouseClickDrawFeature.getInstance().setupDriverFeature(app, DriverFeature.getDriverManager());
+                
                 app.setVisibility(true);
             }
         });

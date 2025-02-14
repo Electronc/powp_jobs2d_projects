@@ -5,7 +5,7 @@ import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.events.SelectClearPanelOptionListener;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 
-public class DrawerFeature implements DriverFeatureInterface {
+public class DrawerFeature implements FeatureInterface {
 
     private static DrawPanelController drawerController;
     private static DrawerFeature instance;
@@ -22,7 +22,7 @@ public class DrawerFeature implements DriverFeatureInterface {
     }
    
     
-    public void setupDriverFeature(Application application, DriverManager driverManager) {
+    public void setupFeature(Application application, DriverManager driverManager) {
         SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 
         drawerController = new DrawPanelController();

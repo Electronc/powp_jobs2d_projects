@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("Convert2Lambda")
-public class MouseClickDrawFeature implements DriverFeatureInterface{
+public class MouseClickDrawFeature implements FeatureInterface{
 
 	private static Application application;
 	private static DriverManager driverManager;
@@ -29,7 +29,7 @@ public class MouseClickDrawFeature implements DriverFeatureInterface{
 		return instance;
 	}
 
-	public void setupDriverFeature(
+	public void setupFeature(
 			Application application,
 			DriverManager driverManager
 	) {

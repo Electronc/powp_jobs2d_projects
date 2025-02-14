@@ -14,7 +14,7 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.swing.*;
 import java.util.Objects;
 
-public class MacroFeature implements DriverFeatureInterface {
+public class MacroFeature implements FeatureInterface {
     private static Application application;
     private static MacroFeature instance;
     private static DriverManager driverManager;
@@ -34,7 +34,7 @@ public class MacroFeature implements DriverFeatureInterface {
     }
 
     private static boolean isRecording = false;
-    public void setupDriverFeature(Application application, DriverManager driverManager){
+    public void setupFeature(Application application, DriverManager driverManager){
         recordedCommand = new CompoundCommandBuilder();
         recordedCommand.setName("Record command");
 

@@ -14,7 +14,7 @@ import edu.kis.powp.jobs2d.drivers.DriverManager;
 import edu.kis.powp.jobs2d.drivers.ToggleDriverDecoratorOptionListener;
 import edu.kis.powp.observer.Publisher;
 
-public class CanvasFeature implements DriverFeatureInterface {
+public class CanvasFeature implements FeatureInterface {
     private static Application app;
     private static List<ICanvas> canvases = null;
     private static ICanvas currentCanvas;
@@ -33,7 +33,7 @@ public class CanvasFeature implements DriverFeatureInterface {
         return instance;
     }
     
-    public void setupDriverFeature(Application application, DriverManager driverManager) {
+    public void setupFeature(Application application, DriverManager driverManager) {
         app = application;
         app.addComponentMenu(CanvasFeature.class, "Canvas Settings", 0);
 
