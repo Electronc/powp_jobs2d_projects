@@ -10,14 +10,8 @@ import edu.kis.powp.jobs2d.drivers.observer.ApplyDriverDecoratorsSubscriber;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener;
 import edu.kis.powp.jobs2d.events.SelectMacroOptionListener.MacroAction;
 
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.swing.*;
-import java.util.Objects;
-
 public class MacroFeature implements FeatureInterface {
-    private static Application application;
     private static MacroFeature instance;
-    private static DriverManager driverManager;
     private static CompoundCommandBuilder recordedCommand;
     private static final RecordMacroDriverDecorator recordMacroDriverDecorator = new RecordMacroDriverDecorator();
 
@@ -42,10 +36,10 @@ public class MacroFeature implements FeatureInterface {
         SelectMacroOptionListener startOption = new SelectMacroOptionListener(MacroAction.TOGGLE);
         SelectMacroOptionListener loadOption = new SelectMacroOptionListener(MacroAction.LOAD);
 
-        application.addComponentMenu(MacroFeature.class, "Macro");
-        application.addComponentMenuElement(MacroFeature.class, "Clear", clearOption);
-        application.addComponentMenuElementWithCheckBox(MacroFeature.class, "Start/Stop", startOption, false);
-        application.addComponentMenuElement(MacroFeature.class, "Load", loadOption);
+        FeatureManager.getInstance().addFeatureMenuItem(MacroFeature.class, "Macro",null);
+        FeatureManager.getInstance().addFeatureMenuItemWithCheckBox(MacroFeature.class, "Start/Stop",startOption, false);
+        FeatureManager.getInstance().addFeatureMenuElement(MacroFeature.class, "Clear",clearOption);
+        FeatureManager.getInstance().addFeatureMenuElement(MacroFeature.class, "Load",loadOption);
 
         ApplyDriverDecoratorsSubscriber.getInstance().addDriverDecorator(recordMacroDriverDecorator);
         driverManager.addSubscriber(ApplyDriverDecoratorsSubscriber.getInstance());

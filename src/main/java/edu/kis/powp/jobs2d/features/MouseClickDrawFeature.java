@@ -35,8 +35,8 @@ public class MouseClickDrawFeature implements FeatureInterface{
 	) {
 		MouseClickDrawFeature.application = application;
 		MouseClickDrawFeature.driverManager = driverManager;
-		MouseClickDrawFeature.application.addComponentMenu(MouseClickDrawFeature.class, "Click to Draw");
-		MouseClickDrawFeature.application.addComponentMenuElementWithCheckBox(MouseClickDrawFeature.class, "Armed", armedListener, false);
+		FeatureManager.getInstance().addFeatureMenuItem(MouseClickDrawFeature.class, "Click to Draw", armedListener);
+		FeatureManager.getInstance().addFeatureMenuItemWithCheckBox(MouseClickDrawFeature.class, "Armed", armedListener, false);
 
 		MouseClickDrawFeature.application.getFreePanel().addMouseListener(mouseClickListener);
 	}

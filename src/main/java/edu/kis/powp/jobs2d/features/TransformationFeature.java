@@ -12,12 +12,9 @@ public class TransformationFeature implements FeatureInterface{
     private static final TransformationDriver transformationDriver = new TransformationDriver();
     private static final Publisher publisher = new Publisher();
     private static TransformationFeature instance;
-    private static Application app;
 
     /**
      * Setup jobs2d drivers Plugin and add to application.
-     *
-     * @param application Application context.
      */
 
     public static TransformationFeature getInstance() {
@@ -32,8 +29,7 @@ public class TransformationFeature implements FeatureInterface{
     }
 
     public void setupFeature(Application application, DriverManager driverManager) {
-        app = application;
-        app.addComponentMenu(TransformationFeature.class, "Transformations");
+        FeatureManager.getInstance().addFeatureMenuItem(TransformationFeature.class,"Transformations",null);
 
         ApplyDriverDecoratorsSubscriber.getInstance().addDriverDecorator(transformationDriver);
         driverManager.addSubscriber(ApplyDriverDecoratorsSubscriber.getInstance());
@@ -46,7 +42,7 @@ public class TransformationFeature implements FeatureInterface{
      */
     public static void addTransformation(String name, TransformationMethod transformationMethod) {
         ToggleTransformationOptionListener listener = new ToggleTransformationOptionListener(transformationDriver, transformationMethod, publisher);
-        app.addComponentMenuElementWithCheckBox(TransformationFeature.class, name, listener, false);
+        FeatureManager.getInstance().addFeatureMenuItemWithCheckBox(TransformationFeature.class, name, listener, false);
     }
 
 }
