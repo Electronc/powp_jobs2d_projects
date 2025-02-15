@@ -141,32 +141,15 @@ public class TestJobs2dApp {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Application app = new Application("Jobs 2D");
-                FeatureManager featureManager = new FeatureManager(app, DriverFeature.getDriverManager());
-                featureManager.addFeature(DrawerFeature.getInstance());
-                featureManager.addFeature(CommandsFeature.getInstance());
                 List<ICanvas> canvases = new ArrayList<>();
                 for (Format format : Format.values()) {
                     canvases.add(new RectangleCanvas(format));
                 }
                 canvases.add(new RectangleCanvas(200, 100, "Rectangle 200x100", "custom"));
                 canvases.add(new EllipseCanvas(150, 100, "Ellipse rx:150 ry:100", "custom"));
-                
                 CanvasFeature.setCanvases(canvases);
-                
-                featureManager.addFeature(CanvasFeature.getInstance());
-                featureManager.addFeature(UsageMonitorFeature.getInstance());
-                featureManager.addFeature(DriverFeature.getInstance());
-                featureManager.addFeature(TransformationFeature.getInstance());
-                featureManager.addFeature(MacroFeature.getInstance());
-                featureManager.addFeature(MouseClickDrawFeature.getInstance());
-                
-                featureManager.setupAll();
-                
-                
+                FeatureManager.getInstance(app, DriverFeature.getDriverManager()).LoadAllFeatures();
                 setupDrivers(app);
-                
-               
-                
                 setupTransformations();
                 setupPresetTests(app);
                 setupCommandTests(app);
